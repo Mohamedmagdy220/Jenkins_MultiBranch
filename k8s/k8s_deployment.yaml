@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-app
+  labels:
+    app: jenkins-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins-app
+  template:
+    metadata:
+      labels:
+        app: jenkins-app
+    spec:
+      tolerations:
+      - key: "workload"
+        operator: "Equal"
+        value: "app"
+        effect: "NoSchedule"
+      containers:
+        - name: jenkins-app
+          image: mohamed2200/jenkins-app:latest
+          ports:
+            - containerPort: 8080
