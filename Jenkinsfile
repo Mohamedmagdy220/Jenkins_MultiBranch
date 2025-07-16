@@ -1,7 +1,7 @@
 @Library('my-shared-lib-lab35') _
 
 pipeline {
-    agent { label 'worker-1' }  
+    agent { label 'worker-1' } 
 
     environment {
         IMAGE = "mohamed2200/jenkins-app:${env.BRANCH_NAME}"
